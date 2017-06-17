@@ -33,11 +33,11 @@ __Where:__
 
 ### Timestep Length and Elapsed Duration
 
-To determine the optimal values for the timestep length (`N`) and duration (`dt`), I started by setting these values relatively low, `dt = 0.01` and `N = 6`. Through a process of trial and error, gradually increasing the value, I observed that the vehicle did not anticipate curves quick enough, thus causing it leave the track, especially when at high speeds. Setting these values too high prohibited the vehicle from achieving a high speed due to overfitting its trajectory. Finally, a balance was achieved by setting the `dt` value to `0.05` and `N` value to `10`.
+To determine the optimal values for the timestep length (`N`) and duration (`dt`), I started by setting these values relatively low, `dt = 0.1` and `N = 6`. Through a process of trial and error, gradually increasing the value, I observed that the vehicle did not anticipate curves quick enough, thus causing it leave the track, especially when at high speeds and sharp corner. Setting these values too high prohibited the vehicle from achieving a high speed due to overfitting its trajectory. Finally, a balance was achieved by setting the `dt` value to `0.05` and `N` value to `10` while also factoring in the induced latency.
 
 ### Polynomial Fitting and MPC Preprocessing
 
-After converting the the waypoints to the vehicle's local coordinate system, I used a 3rd order polynomial to fit the path. I initially started with a 2nd order polynomial  and  oticed that the vehicle underfit the path, especially on very tight corners. changing to a 3rd order polynomial, I observed the vehicle handeling the tight curves better, especially at high speed.
+After converting the the waypoints to the vehicle's local coordinate system, I used a 3rd order polynomial to fit the path. I initially started with a 2nd order polynomial and noticed that the vehicle underfit the path, especially on very tight corners. Changing to a 3rd order polynomial, I observed the vehicle handeling the tight curves better, especially at high speed.
 
 ### Model Predictive Control and Latency
 
